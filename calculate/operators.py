@@ -124,7 +124,6 @@ class Operators:
         """
         self.result = float(self.numbers[0])
         for i in range(1, len(self.numbers)):
-            try:
-                self.result /= float(self.numbers[i])
-            except ZeroDivisionError:
-                self.result = None
+            if float(self.numbers[i]) == 0:
+                raise ZeroDivisionError("Division by zero is not allowed")
+            self.result /= float(self.numbers[i])
